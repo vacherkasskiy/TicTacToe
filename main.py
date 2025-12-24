@@ -94,7 +94,11 @@ def start_game():
             print("Координаты введены в неверном формате")
             continue
 
-        make_turn(x, y, current_turn)
+        success = make_turn(x, y, current_turn)
+
+        if not success:
+            print("Выбранная ячейка уже занята")
+            continue
 
         if check_win():
             print_grid()
@@ -102,5 +106,7 @@ def start_game():
             return
 
         current_turn += 1
+
+    print("Ничья")
 
 start_game()
